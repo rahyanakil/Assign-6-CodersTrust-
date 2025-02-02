@@ -16,7 +16,7 @@ const BlogCard = ({ blog, onBookmark }) => {
           <img
             src={blog.image}
             alt={blog.title}
-            className="h-48 w-full object-cover md:w-48"
+            className="h-64 w-full object-cover md:w-48"
           />
         </div>
 
