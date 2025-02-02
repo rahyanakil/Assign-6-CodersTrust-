@@ -9,8 +9,8 @@ const BlogCard = ({ blog, onBookmark }) => {
   };
 
   return (
-    <div className="flex items-center p-4 border-b">
-      <img src={blog.image} alt={blog.title} className="w-16 h-16 rounded-full" />
+    <div className=" items-center border-b">
+      <img src={blog.image} alt={blog.title} className="w-16 h-16 " />
       <div className="ml-4">
         <h2 className="text-xl font-semibold">{blog.title}</h2>
       </div>
