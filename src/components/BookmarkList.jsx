@@ -1,23 +1,16 @@
-import { Link } from "react-router-dom";
-
 const BookmarkList = ({ bookmarks }) => {
-  return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Bookmarked Posts</h2>
-      {bookmarks.length === 0 ? (
-        <p>No bookmarks yet.</p>
-      ) : (
-        bookmarks.map((post) => (
-          <div key={post.id} className="border p-4 rounded-lg shadow-md mb-4">
-            <h3 className="text-lg font-bold">{post.title}</h3>
-            <Link to={`/post/${post.id}`} className="text-blue-500 hover:underline">
-              Read more
-            </Link>
-          </div>
-        ))
-      )}
-    </div>
-  );
-};
-
-export default BookmarkList;
+    return (
+      <div className="w-1/4 p-4 border-l">
+        <h2 className="text-xl font-semibold">Bookmarks ({bookmarks.length})</h2>
+        <ul>
+          {bookmarks.map((blog) => (
+            <li key={blog.id} className="mt-2">
+              <a href={`/bookmark/${blog.id}`} className="text-blue-500">{blog.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+  
+  export default BookmarkList;

@@ -1,24 +1,35 @@
-import { useState } from "react";
-import PostCard from "../components/PostCard";
-import postsData from "../data/posts.json";
+import { useState, useEffect } from 'react';
+import BlogCard from '../components/BlogCard';
+import BookmarkList from '../components/BookmarkList';
+import data from '../data/data.json';
 
 const Home = () => {
-  const [posts, setPosts] = useState(postsData);
+  const [bookmarks, setBookmarks] = useState([]);
 
-  const handleBookmark = (id) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post.id === id ? { ...post, isBookmarked: !post.isBookmarked } : post
-      )
-    );
+  useEffect(() => {
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    setBookmarks(storedBookmarks);
+  }, []);
+
+  const handleBookmark = (blog, isBookmarked) => {
+    let updatedBookmarks;
+    if (isBookmarked) {
+      updatedBookmarks = [...bookmarks, blog];
+    } else {
+      updatedBookmarks = bookmarks.filter((b) => b.id !== blog.id);
+    }
+    setBookmarks(updatedBookmarks);
+    localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">All Posts</h2>
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} onBookmark={handleBookmark} />
-      ))}
+    <div className="flex">
+      <div className="w-3/4">
+        {data.map((blog) => (
+          <BlogCard key={blog.id} blog={blog} onBookmark={handleBookmark} />
+        ))}
+      </div>
+      <BookmarkList bookmarks={bookmarks} />
     </div>
   );
 };
