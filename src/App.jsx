@@ -5,10 +5,13 @@ import Bookmark from './pages/BookMark';
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/bookmark/:id" element={<Bookmark />} />
-      </Routes>
+      {/* Responsive Container */}
+      <div className="min-h-screen bg-gray-100">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/bookmark/:id" element={<Bookmark />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
