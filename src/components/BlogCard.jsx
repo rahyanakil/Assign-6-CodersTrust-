@@ -1,31 +1,27 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import React from 'react';
-import { useEffect } from 'react';
 
-// Inside BlogCard.jsx
-const BlogCard = ({ blog, onBookmark }) => {
-  // Check if the current blog is already bookmarked
-  const [isBookmarked, setIsBookmarked] = useState(false);
-
-  useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-    setIsBookmarked(storedBookmarks.some((b) => b.id === blog.id));
-  }, [blog.id]);
-
-  const handleClick = () => {
-    // Toggle the bookmark state
-    onBookmark(blog, !isBookmarked);
-    setIsBookmarked(!isBookmarked);
-  };
-
+export default function BlogCard({ blog, isBookmarked, toggleBookmark }) {
   return (
-    <div>
-      {/* Blog content */}
-      <button onClick={handleClick}>
-        {isBookmarked ? "Remove Bookmark" : "Bookmark"}
-      </button>
+    <div className="card card-side bg-base-100 shadow-xl mb-4">
+      <figure className="w-1/3">
+        <img src={blog.image} alt="Blog cover" className="h-full object-cover" />
+      </figure>
+      <div className="card-body w-2/3">
+        <h2 className="card-title">{blog.title}</h2>
+        <p className="text-sm">By {blog.author}</p>
+        <div className="card-actions justify-end">
+          <button 
+            className="btn btn-sm" 
+            onClick={() => toggleBookmark(blog)}
+          >
+            {isBookmarked ? '❤️ Bookmarked' : '🔖 Bookmark'}
+          </button>
+          <Link to={`/blog/${blog.id}`} className="btn btn-sm btn-primary">
+            Read More
+          </Link>
+        </div>
+      </div>
     </div>
   );
-};
-
-export default BlogCard;
+}

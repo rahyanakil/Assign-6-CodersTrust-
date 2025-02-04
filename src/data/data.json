@@ -1,17 +1,22 @@
-[
+
+
+  [
     {
       "id": 1,
       "title": "How to get your first job as a self-taught programmer",
-      "image": "https://i.ibb.co.com/fz6zVWGk/Rectangle-1.png"
+      "image": "https://i.ibb.co.com/fz6zVWGk/Rectangle-1.png",
+      "author": "John Doe"
     },
     {
       "id": 2,
-      "title": "Another blog title",
-      "image": "https://i.ibb.co.com/xqHB5CnQ/Rectangle3.png"
+      "title": "How to get your first job as a self-taught programmer",
+      "image": "https://i.ibb.co.com/7dx7SBPW/Rectangle2.png",
+      "author": "Jane Smith"
     },
     {
       "id": 3,
-      "title": "Yet another blog title",
-      "image": "https://i.ibb.co.com/7dx7SBPW/Rectangle2.png"
+      "title": "How to get your first job as a self-taught programmer",
+      "image": "https://i.ibb.co.com/xqHB5CnQ/Rectangle3.png",
+      "author": "Mike Johnson"
     }
   ]
